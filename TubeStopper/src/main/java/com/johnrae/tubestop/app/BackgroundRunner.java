@@ -17,7 +17,7 @@ public class BackgroundRunner extends Service {
 
     public BackgroundRunner(WifiService wifiService) {
         this.wifiService = wifiService;
-        wifiService.storeWifis();
+        wifiService.storeCurrentWifis();
     }
 
 

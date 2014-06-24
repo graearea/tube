@@ -65,7 +65,7 @@ public class Main extends ActionBarActivity {
     }
 
     public void storeWifi(final View v) {
-        final String location = wifiService.storeWifis();
+        final String location = wifiService.storeCurrentWifis();
         ((TextView) findViewById(R.id.displaySection)).setText("Location:" + location);
 
     }
