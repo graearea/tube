@@ -2,8 +2,6 @@ package com.johnrae.tubestop.app;
 
 import com.johnrae.tubestopper.core.TubeLine;
 import com.johnrae.tubestopper.core.TubeLineManager;
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.core.IsEqual;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,6 +9,11 @@ import org.junit.Test;
 import java.awt.*;
 import java.util.Set;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.hasItem;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -30,15 +33,15 @@ public class TubeLineManagerTest {
     @Test
     public void getTubeLinesShouldReturnASetContainingAtLeastOneLine() {
         final Set<TubeLine> tubeLines = underTest.getTubeLines();
-        assertTrue(tubeLines.size() > 0);
+        assertThat(tubeLines.size(),equalTo(13));
     }
 
     @Test
-    public void Should() {
+    public void dataShouldContainBakerlooLine() {
         final Set<TubeLine> tubeLines = underTest.getTubeLines();
         final Color brown = Color.getColor("ab6612");
-        assertTrue(tubeLines.contains(new TubeLine(1,"Bakerloo Line", brown)));
-
+        assertThat(new TubeLine(1, "Bakerloo Line", brown), equalTo(new TubeLine(1, "Bakerloo Line", brown)));
+        assertThat(tubeLines, hasItem(new TubeLine(1, "Bakerloo Line", brown)));
 
     }
 }

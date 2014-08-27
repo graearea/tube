@@ -4,17 +4,20 @@ buildscript {
     repositories {
         mavenCentral()
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.9.+'
-    }
 }
 sourceCompatibility = JavaVersion.VERSION_1_6   //these two lines
 targetCompatibility = JavaVersion.VERSION_1_6   //are the only ones that matter
 
+sourceSets {
+    main {
+        output.resourcesDir = "build/classes/main"
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.google.guava:guava:17.0'
+    testCompile 'org.hamcrest:hamcrest-all:1.3'
     testCompile 'junit:junit:4.10'
-    testCompile 'org.hamcrest:hamcrest-core:1.2.1'
 
 }
