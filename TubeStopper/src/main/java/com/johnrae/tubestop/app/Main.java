@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.*;
 import android.widget.TextView;
+import com.johnrae.tubestopper.core.TubeLineManager;
 
 import java.util.Locale;
 import java.util.Set;
@@ -47,6 +48,9 @@ public class Main extends ActionBarActivity {
         storageManager = new WifiStorage((SharedPreferences) getSharedPreferences("locations",0));
 
         wifiService = new WifiService(wifiSniffer,storageManager);
+        final TubeInfo tubeInfo = new TubeInfo();
+        ((TextView) findViewById(R.id.displaySection)).setText(tubeInfo.getLines());
+
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
